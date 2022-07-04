@@ -1,0 +1,34 @@
+# Table of content
+# Learn more at https://jupyterbook.org/customize/toc.html
+root: intro
+format: jb-book
+parts:
+- caption: About
+  chapters:
+    - title: Geosmart website
+      url: https://geo-smart.github.io/index.html
+
+- caption: Preparation
+  chapters:
+    - title: Project Pythia Foundations
+      url: https://foundations.projectpythia.org/landing-page.html
+
+- caption: Introduction
+  chapters:
+    - file: introduction/about_this_book
+    - file: introduction/computational_environments
+
+- caption: Chapter 1
+  chapters:
+    - file: ch_1/story
+    - file: ch_1/notebooks
+
+- caption: Chapter 2
+  chapters:
+    - file: ch_2/story
+    - file: ch_2/notebooks
+
+- caption: Reference
+  chapters:
+    - file: reference/glossary
+    - file: reference/bibliography
