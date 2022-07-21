@@ -1,0 +1,1293 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Cloud Computing: Running Python Code on AWS</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Introduction to obspy" href="../ch_3/intro_to_obspy.html" />
+    <link rel="prev" title="Introduction to Version Control with Git" href="../ch_1/story.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint">⚠️ This book is currently under construction ⚠️</div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/GeoSMART_logo.svg" class="logo" alt="logo">
+      
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to the GeoSMART Jupyter Book!
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  About
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference external" href="https://geo-smart.github.io/index.html">
+   Geosmart website
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Preparation
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference external" href="https://foundations.projectpythia.org/landing-page.html">
+   Project Pythia Foundations
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Introduction
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/about_this_book.html">
+   About This Book (ESS490-590-Spr21)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/computational_environments.html">
+   Computational Environments
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Version Control with Git
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch_1/story.html">
+   Introduction to Version Control with Git
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Cloud Computing with AWS
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Cloud Computing: Running Python Code on AWS
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  K-Means with Pandas
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch_3/intro_to_obspy.html">
+   Introduction to obspy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch_3/intro_to_pandas.html">
+   Introduction to Pandas
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch_3/intro_to_numpy_and_matplotlib.html">
+   Introduction to Numpy and Matplotlib
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Databases
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch_4/story.html">
+   Databases
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Resampling
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch_5/resampling.html">
+   Statistical Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch_5/fourier_transform.html">
+   Frequency Transform
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Clustering
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch_6/k_means_clustering.html">
+   K-means Clustering
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Dimentionality Reduction
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch_7/model_performance.html">
+   Model Performance
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch_7/principal_component_analysis.html">
+   Dimensionality Reduction
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Reference
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reference/glossary.html">
+   Glossaries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reference/bibliography.html">
+   Bibliography
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/geo-smart/usecasebook"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/geo-smart/usecasebook/issues/new?title=Issue%20on%20page%20%2Fch_2/story.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/geo-smart/usecasebook/edit/main/book/ch_2/story.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/ch_2/story.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#create-an-aws-educate-account">
+   Create an AWS Educate Account
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#create-an-aws-account">
+   Create an AWS Account
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#most-important-points">
+   Most Important Points
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#start-working-open-the-home-page-of-your-aws-account">
+     Start working! Open the home page of your AWS account
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#check-the-region-where-you-are-here-oregon-us-west-2">
+     Check the region where you are [here Oregon = us-west-2]
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#you-need-to-create-a-key-pair-to-access-ec2-instances">
+     You need to create a key pair to access EC2 instances
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#click-on-create-key-pair-to-start">
+     Click on ‘Create key pair’ to start
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fill-in-the-form-and-click-on-create-key-pair">
+     Fill in the form and click on ‘Create key pair’
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#download-the-file-on-your-machine">
+     Download the file on your machine
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#your-new-key-pair-appears-on-the-list-of-available-key-pairs">
+     Your new key pair appears on the list of available key pairs
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#move-key-pair-to-ssh-for-instance">
+     Move key pair to .ssh for instance
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#now-let-us-launch-a-new-ec2-instance">
+     Now let us launch a new EC2 instance!
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#you-first-need-to-choose-an-amazon-machine-image-ami">
+     You first need to choose an Amazon Machine Image [AMI]
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#we-want-one-with-anaconda-installed">
+     We want one with Anaconda installed
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#we-choose-the-one-with-anaconda-and-python-3">
+     We choose the one with Anaconda and Python 3
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#check-the-cost-of-each-type-of-instance-before-choosing-one">
+     Check the cost of each type of instance before choosing one
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#select-the-type-of-instance-you-want-we-choose-t3-small">
+     Select the type of instance you want: We choose t3.small
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#configure-the-instance-you-can-leave-it-as-it-is">
+     Configure the instance [you can leave it as it is]
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#choose-the-storage-you-can-leave-it-as-it-is">
+     Choose the storage [you can leave it as it is]
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#add-tags-to-remember-what-jobs-you-will-be-running-on-your-ec2-instance">
+     Add tags to remember what jobs you will be running on your EC2 instance
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#i-want-to-run-the-python-script-textit-find-all-lfes-parallel-py">
+     I want to run the Python script \textit[find_all_LFEs_parallel.py
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#choose-a-security-group-you-can-use-the-same-for-several-instances">
+     Choose a security group [you can use the same for several instances]
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#review-your-options-before-launching">
+     Review your options before launching
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#choose-a-key-pair-the-one-you-have-downloaded-earlier">
+     Choose a key pair: the one you have downloaded earlier
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#your-ec2-instance-is-launching">
+     Your EC2 instance is launching
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#go-back-to-the-list-of-instances">
+     Go back to the list of instances
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#your-new-ec2-instance-is-here">
+     Your new EC2 instance is here
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#you-can-modify-the-tags">
+     You can modify the tags
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#your-can-modify-the-security-group">
+     Your can modify the security group
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#change-the-rules-to-connect-to-your-instances">
+     Change the rules to connect to your instances
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#your-ip-may-have-changed-since-the-last-time-you-connected">
+     Your IP may have changed since the last time you connected
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#follow-the-instructions-to-connect-with-ssh">
+     Follow the instructions to connect with SSH
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#open-an-ssh-terminal-to-connect-to-your-instance">
+     Open an SSH terminal to connect to your instance
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#install-git-and-clone-your-repository">
+     Install git and clone your repository
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#create-your-anaconda-environment">
+     Create your Anaconda environment
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#in-my-case-i-just-prepare-some-input-files">
+     In my case, I just prepare some input files
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#use-nohup-to-continue-your-computation-after-you-disconnect">
+     Use nohup to continue your computation after you disconnect
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#never-forget-to-terminate-your-instances">
+     Never forget to terminate your instances!!!
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Never forget to terminate your instances!!!
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#check-if-your-instance-has-been-terminated">
+     Check if your instance has been terminated
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#go-to-your-billing-dashboard">
+     Go to your billing dashboard
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#you-can-check-how-much-you-have-been-spending-do-it-often">
+     You can check how much you have been spending [do it often!]
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#go-to-textit-cost-explorer">
+     Go to \textit[Cost Explorer”/&gt;
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#look-at-the-daily-amounts-you-spent">
+     Look at the daily amounts you spent
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     Look at the daily amounts you spent
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#go-to-textit-budgets">
+     Go to \textit[Budgets”/&gt;
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#you-can-create-your-own-budgets">
+     You can create your own budgets
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#some-sources-of-funding">
+   Some sources of funding
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#happy-computing">
+   Happy computing!
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Cloud Computing: Running Python Code on AWS</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#create-an-aws-educate-account">
+   Create an AWS Educate Account
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#create-an-aws-account">
+   Create an AWS Account
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#most-important-points">
+   Most Important Points
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#start-working-open-the-home-page-of-your-aws-account">
+     Start working! Open the home page of your AWS account
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#check-the-region-where-you-are-here-oregon-us-west-2">
+     Check the region where you are [here Oregon = us-west-2]
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#you-need-to-create-a-key-pair-to-access-ec2-instances">
+     You need to create a key pair to access EC2 instances
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#click-on-create-key-pair-to-start">
+     Click on ‘Create key pair’ to start
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fill-in-the-form-and-click-on-create-key-pair">
+     Fill in the form and click on ‘Create key pair’
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#download-the-file-on-your-machine">
+     Download the file on your machine
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#your-new-key-pair-appears-on-the-list-of-available-key-pairs">
+     Your new key pair appears on the list of available key pairs
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#move-key-pair-to-ssh-for-instance">
+     Move key pair to .ssh for instance
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#now-let-us-launch-a-new-ec2-instance">
+     Now let us launch a new EC2 instance!
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#you-first-need-to-choose-an-amazon-machine-image-ami">
+     You first need to choose an Amazon Machine Image [AMI]
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#we-want-one-with-anaconda-installed">
+     We want one with Anaconda installed
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#we-choose-the-one-with-anaconda-and-python-3">
+     We choose the one with Anaconda and Python 3
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#check-the-cost-of-each-type-of-instance-before-choosing-one">
+     Check the cost of each type of instance before choosing one
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#select-the-type-of-instance-you-want-we-choose-t3-small">
+     Select the type of instance you want: We choose t3.small
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#configure-the-instance-you-can-leave-it-as-it-is">
+     Configure the instance [you can leave it as it is]
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#choose-the-storage-you-can-leave-it-as-it-is">
+     Choose the storage [you can leave it as it is]
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#add-tags-to-remember-what-jobs-you-will-be-running-on-your-ec2-instance">
+     Add tags to remember what jobs you will be running on your EC2 instance
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#i-want-to-run-the-python-script-textit-find-all-lfes-parallel-py">
+     I want to run the Python script \textit[find_all_LFEs_parallel.py
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#choose-a-security-group-you-can-use-the-same-for-several-instances">
+     Choose a security group [you can use the same for several instances]
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#review-your-options-before-launching">
+     Review your options before launching
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#choose-a-key-pair-the-one-you-have-downloaded-earlier">
+     Choose a key pair: the one you have downloaded earlier
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#your-ec2-instance-is-launching">
+     Your EC2 instance is launching
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#go-back-to-the-list-of-instances">
+     Go back to the list of instances
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#your-new-ec2-instance-is-here">
+     Your new EC2 instance is here
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#you-can-modify-the-tags">
+     You can modify the tags
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#your-can-modify-the-security-group">
+     Your can modify the security group
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#change-the-rules-to-connect-to-your-instances">
+     Change the rules to connect to your instances
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#your-ip-may-have-changed-since-the-last-time-you-connected">
+     Your IP may have changed since the last time you connected
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#follow-the-instructions-to-connect-with-ssh">
+     Follow the instructions to connect with SSH
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#open-an-ssh-terminal-to-connect-to-your-instance">
+     Open an SSH terminal to connect to your instance
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#install-git-and-clone-your-repository">
+     Install git and clone your repository
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#create-your-anaconda-environment">
+     Create your Anaconda environment
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#in-my-case-i-just-prepare-some-input-files">
+     In my case, I just prepare some input files
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#use-nohup-to-continue-your-computation-after-you-disconnect">
+     Use nohup to continue your computation after you disconnect
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#never-forget-to-terminate-your-instances">
+     Never forget to terminate your instances!!!
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Never forget to terminate your instances!!!
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#check-if-your-instance-has-been-terminated">
+     Check if your instance has been terminated
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#go-to-your-billing-dashboard">
+     Go to your billing dashboard
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#you-can-check-how-much-you-have-been-spending-do-it-often">
+     You can check how much you have been spending [do it often!]
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#go-to-textit-cost-explorer">
+     Go to \textit[Cost Explorer”/&gt;
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#look-at-the-daily-amounts-you-spent">
+     Look at the daily amounts you spent
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     Look at the daily amounts you spent
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#go-to-textit-budgets">
+     Go to \textit[Budgets”/&gt;
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#you-can-create-your-own-budgets">
+     You can create your own budgets
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#some-sources-of-funding">
+   Some sources of funding
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#happy-computing">
+   Happy computing!
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="cloud-computing-running-python-code-on-aws">
+<h1>Cloud Computing: Running Python Code on AWS<a class="headerlink" href="#cloud-computing-running-python-code-on-aws" title="Permalink to this headline">#</a></h1>
+<section id="create-an-aws-educate-account">
+<h2>Create an AWS Educate Account<a class="headerlink" href="#create-an-aws-educate-account" title="Permalink to this headline">#</a></h2>
+<p>Go to <a class="reference external" href="https://aws.amazon.com/education/awseducate/">https://aws.amazon.com/education/awseducate/</a>.</p>
+<p>Creating the account will give you access to AWS tutorials and some AWS credits.</p>
+</section>
+<section id="create-an-aws-account">
+<h2>Create an AWS Account<a class="headerlink" href="#create-an-aws-account" title="Permalink to this headline">#</a></h2>
+<p>Go to <a class="reference external" href="https://aws.amazon.com/">https://aws.amazon.com/</a>. You will need to ener a credit card number.</p>
+<p>Once your account is created, you should be able to redeem your AWS credits.</p>
+</section>
+<section id="most-important-points">
+<h2>Most Important Points<a class="headerlink" href="#most-important-points" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Do not forget to terminate your instances</p></li>
+<li><p>Check your billing dashboard on a regular basis</p></li>
+<li><p>The EC2 dashboard shows only instances and keys for the region you have currently selected. Other instances may be running in other regions.</p></li>
+</ul>
+<section id="start-working-open-the-home-page-of-your-aws-account">
+<h3>Start working! Open the home page of your AWS account<a class="headerlink" href="#start-working-open-the-home-page-of-your-aws-account" title="Permalink to this headline">#</a></h3>
+<img alt="../_images/AWS_home.jpg" src="../_images/AWS_home.jpg" />
+</section>
+<section id="check-the-region-where-you-are-here-oregon-us-west-2">
+<h3>Check the region where you are [here Oregon = us-west-2]<a class="headerlink" href="#check-the-region-where-you-are-here-oregon-us-west-2" title="Permalink to this headline">#</a></h3>
+<img alt="../_images/EC2_home.jpg" src="../_images/EC2_home.jpg" />
+</section>
+<section id="you-need-to-create-a-key-pair-to-access-ec2-instances">
+<h3>You need to create a key pair to access EC2 instances<a class="headerlink" href="#you-need-to-create-a-key-pair-to-access-ec2-instances" title="Permalink to this headline">#</a></h3>
+<img alt="../_images/EC2_home.jpg" src="../_images/EC2_home.jpg" />
+</section>
+<section id="click-on-create-key-pair-to-start">
+<h3>Click on ‘Create key pair’ to start<a class="headerlink" href="#click-on-create-key-pair-to-start" title="Permalink to this headline">#</a></h3>
+<img alt="../_images/list_key_pairs_before.jpg" src="../_images/list_key_pairs_before.jpg" />
+</section>
+<section id="fill-in-the-form-and-click-on-create-key-pair">
+<h3>Fill in the form and click on ‘Create key pair’<a class="headerlink" href="#fill-in-the-form-and-click-on-create-key-pair" title="Permalink to this headline">#</a></h3>
+<img alt="../_images/create_key_pair.jpg" src="../_images/create_key_pair.jpg" />
+</section>
+<section id="download-the-file-on-your-machine">
+<h3>Download the file on your machine<a class="headerlink" href="#download-the-file-on-your-machine" title="Permalink to this headline">#</a></h3>
+<img alt="../_images/download_key_pair.jpg" src="../_images/download_key_pair.jpg" />
+</section>
+<section id="your-new-key-pair-appears-on-the-list-of-available-key-pairs">
+<h3>Your new key pair appears on the list of available key pairs<a class="headerlink" href="#your-new-key-pair-appears-on-the-list-of-available-key-pairs" title="Permalink to this headline">#</a></h3>
+<img alt="../_images/list_key_pairs_after.jpg" src="../_images/list_key_pairs_after.jpg" />
+</section>
+<section id="move-key-pair-to-ssh-for-instance">
+<h3>Move key pair to .ssh for instance<a class="headerlink" href="#move-key-pair-to-ssh-for-instance" title="Permalink to this headline">#</a></h3>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>	&gt; cd Downloads
+	&gt; mv my_key.pem ~/.ssh
+</pre></div>
+</div>
+</section>
+<section id="now-let-us-launch-a-new-ec2-instance">
+<h3>Now let us launch a new EC2 instance!<a class="headerlink" href="#now-let-us-launch-a-new-ec2-instance" title="Permalink to this headline">#</a></h3>
+<img alt="../_images/EC2_home.jpg" src="../_images/EC2_home.jpg" />
+</section>
+<section id="you-first-need-to-choose-an-amazon-machine-image-ami">
+<h3>You first need to choose an Amazon Machine Image [AMI]<a class="headerlink" href="#you-first-need-to-choose-an-amazon-machine-image-ami" title="Permalink to this headline">#</a></h3>
+<img alt="../_images/choose_AMI.jpg" src="../_images/choose_AMI.jpg" />
+</section>
+<section id="we-want-one-with-anaconda-installed">
+<h3>We want one with Anaconda installed<a class="headerlink" href="#we-want-one-with-anaconda-installed" title="Permalink to this headline">#</a></h3>
+<img alt="../_images/choose_anaconda_AMIs.jpg" src="../_images/choose_anaconda_AMIs.jpg" />
+</section>
+<section id="we-choose-the-one-with-anaconda-and-python-3">
+<h3>We choose the one with Anaconda and Python 3<a class="headerlink" href="#we-choose-the-one-with-anaconda-and-python-3" title="Permalink to this headline">#</a></h3>
+<img alt="../_images/select_anaconda_python3.jpg" src="../_images/select_anaconda_python3.jpg" />
+</section>
+<section id="check-the-cost-of-each-type-of-instance-before-choosing-one">
+<h3>Check the cost of each type of instance before choosing one<a class="headerlink" href="#check-the-cost-of-each-type-of-instance-before-choosing-one" title="Permalink to this headline">#</a></h3>
+<img alt="../_images/list_of_prices.jpg" src="../_images/list_of_prices.jpg" />
+</section>
+<section id="select-the-type-of-instance-you-want-we-choose-t3-small">
+<h3>Select the type of instance you want: We choose t3.small<a class="headerlink" href="#select-the-type-of-instance-you-want-we-choose-t3-small" title="Permalink to this headline">#</a></h3>
+<img alt="../_images/choose_instance_type.jpg" src="../_images/choose_instance_type.jpg" />
+</section>
+<section id="configure-the-instance-you-can-leave-it-as-it-is">
+<h3>Configure the instance [you can leave it as it is]<a class="headerlink" href="#configure-the-instance-you-can-leave-it-as-it-is" title="Permalink to this headline">#</a></h3>
+<img alt="../_images/configure_instance.jpg" src="../_images/configure_instance.jpg" />
+</section>
+<section id="choose-the-storage-you-can-leave-it-as-it-is">
+<h3>Choose the storage [you can leave it as it is]<a class="headerlink" href="#choose-the-storage-you-can-leave-it-as-it-is" title="Permalink to this headline">#</a></h3>
+<img alt="../_images/add_storage.jpg" src="../_images/add_storage.jpg" />
+</section>
+<section id="add-tags-to-remember-what-jobs-you-will-be-running-on-your-ec2-instance">
+<h3>Add tags to remember what jobs you will be running on your EC2 instance<a class="headerlink" href="#add-tags-to-remember-what-jobs-you-will-be-running-on-your-ec2-instance" title="Permalink to this headline">#</a></h3>
+<img alt="../_images/add_tags.jpg" src="../_images/add_tags.jpg" />
+</section>
+<section id="i-want-to-run-the-python-script-textit-find-all-lfes-parallel-py">
+<h3>I want to run the Python script \textit[find_all_LFEs_parallel.py<a class="headerlink" href="#i-want-to-run-the-python-script-textit-find-all-lfes-parallel-py" title="Permalink to this headline">#</a></h3>
+<img alt="../_images/enter_tag.jpg" src="../_images/enter_tag.jpg" />
+</section>
+<section id="choose-a-security-group-you-can-use-the-same-for-several-instances">
+<h3>Choose a security group [you can use the same for several instances]<a class="headerlink" href="#choose-a-security-group-you-can-use-the-same-for-several-instances" title="Permalink to this headline">#</a></h3>
+<img alt="../_images/choose_security_group.jpg" src="../_images/choose_security_group.jpg" />
+</section>
+<section id="review-your-options-before-launching">
+<h3>Review your options before launching<a class="headerlink" href="#review-your-options-before-launching" title="Permalink to this headline">#</a></h3>
+<img alt="../_images/review_launch.jpg" src="../_images/review_launch.jpg" />
+</section>
+<section id="choose-a-key-pair-the-one-you-have-downloaded-earlier">
+<h3>Choose a key pair: the one you have downloaded earlier<a class="headerlink" href="#choose-a-key-pair-the-one-you-have-downloaded-earlier" title="Permalink to this headline">#</a></h3>
+<img alt="../_images/choose_key_pair.jpg" src="../_images/choose_key_pair.jpg" />
+</section>
+<section id="your-ec2-instance-is-launching">
+<h3>Your EC2 instance is launching<a class="headerlink" href="#your-ec2-instance-is-launching" title="Permalink to this headline">#</a></h3>
+<img alt="../_images/ec2_is_starting.jpg" src="../_images/ec2_is_starting.jpg" />
+</section>
+<section id="go-back-to-the-list-of-instances">
+<h3>Go back to the list of instances<a class="headerlink" href="#go-back-to-the-list-of-instances" title="Permalink to this headline">#</a></h3>
+<img alt="../_images/go_back_to_instances.jpg" src="../_images/go_back_to_instances.jpg" />
+</section>
+<section id="your-new-ec2-instance-is-here">
+<h3>Your new EC2 instance is here<a class="headerlink" href="#your-new-ec2-instance-is-here" title="Permalink to this headline">#</a></h3>
+<img alt="../_images/ec2_is_here.jpg" src="../_images/ec2_is_here.jpg" />
+</section>
+<section id="you-can-modify-the-tags">
+<h3>You can modify the tags<a class="headerlink" href="#you-can-modify-the-tags" title="Permalink to this headline">#</a></h3>
+<img alt="../_images/change_tag.jpg" src="../_images/change_tag.jpg" />
+</section>
+<section id="your-can-modify-the-security-group">
+<h3>Your can modify the security group<a class="headerlink" href="#your-can-modify-the-security-group" title="Permalink to this headline">#</a></h3>
+<img alt="../_images/change_security_group.jpg" src="../_images/change_security_group.jpg" />
+</section>
+<section id="change-the-rules-to-connect-to-your-instances">
+<h3>Change the rules to connect to your instances<a class="headerlink" href="#change-the-rules-to-connect-to-your-instances" title="Permalink to this headline">#</a></h3>
+<img alt="../_images/add_security_rule.jpg" src="../_images/add_security_rule.jpg" />
+</section>
+<section id="your-ip-may-have-changed-since-the-last-time-you-connected">
+<h3>Your IP may have changed since the last time you connected<a class="headerlink" href="#your-ip-may-have-changed-since-the-last-time-you-connected" title="Permalink to this headline">#</a></h3>
+<img alt="../_images/modify_IP.jpg" src="../_images/modify_IP.jpg" />
+</section>
+<section id="follow-the-instructions-to-connect-with-ssh">
+<h3>Follow the instructions to connect with SSH<a class="headerlink" href="#follow-the-instructions-to-connect-with-ssh" title="Permalink to this headline">#</a></h3>
+<img alt="../_images/open_terminal_and_connect.jpg" src="../_images/open_terminal_and_connect.jpg" />
+</section>
+<section id="open-an-ssh-terminal-to-connect-to-your-instance">
+<h3>Open an SSH terminal to connect to your instance<a class="headerlink" href="#open-an-ssh-terminal-to-connect-to-your-instance" title="Permalink to this headline">#</a></h3>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>	&gt; cd ~/.ssh
+	&gt; ssh -i &quot;my_key.pem&quot; ec2-user@ec2-XXX-XXX-XXX-XXX. us-west-2.compute.amazonaws.com
+</pre></div>
+</div>
+</section>
+<section id="install-git-and-clone-your-repository">
+<h3>Install git and clone your repository<a class="headerlink" href="#install-git-and-clone-your-repository" title="Permalink to this headline">#</a></h3>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>	&gt; sudo yum install git
+	&gt; git clone &quot;https://github.com/ArianeDucellier/ catalog.git&quot;
+</pre></div>
+</div>
+</section>
+<section id="create-your-anaconda-environment">
+<h3>Create your Anaconda environment<a class="headerlink" href="#create-your-anaconda-environment" title="Permalink to this headline">#</a></h3>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>	&gt; cd catalog
+	&gt; conda env create -f environment.yml
+	&gt; conda activate catalog
+</pre></div>
+</div>
+</section>
+<section id="in-my-case-i-just-prepare-some-input-files">
+<h3>In my case, I just prepare some input files<a class="headerlink" href="#in-my-case-i-just-prepare-some-input-files" title="Permalink to this headline">#</a></h3>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>	&gt; mkdir data/response
+	&gt; cd src
+	&gt; python get_responses.py
+</pre></div>
+</div>
+</section>
+<section id="use-nohup-to-continue-your-computation-after-you-disconnect">
+<h3>Use nohup to continue your computation after you disconnect<a class="headerlink" href="#use-nohup-to-continue-your-computation-after-you-disconnect" title="Permalink to this headline">#</a></h3>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>	&gt; nohup python find_all_LFEs_parallel.py &amp;
+	&gt; ps -x -o pid,user,%mem,command
+	&gt; exit
+</pre></div>
+</div>
+</section>
+<section id="never-forget-to-terminate-your-instances">
+<h3>Never forget to terminate your instances!!!<a class="headerlink" href="#never-forget-to-terminate-your-instances" title="Permalink to this headline">#</a></h3>
+<img alt="../_images/do_not_forget_terminate.jpg" src="../_images/do_not_forget_terminate.jpg" />
+</section>
+<section id="id1">
+<h3>Never forget to terminate your instances!!!<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+<img alt="../_images/terminate_instance.jpg" src="../_images/terminate_instance.jpg" />
+</section>
+<section id="check-if-your-instance-has-been-terminated">
+<h3>Check if your instance has been terminated<a class="headerlink" href="#check-if-your-instance-has-been-terminated" title="Permalink to this headline">#</a></h3>
+<img alt="../_images/check_terminated.jpg" src="../_images/check_terminated.jpg" />
+</section>
+<section id="go-to-your-billing-dashboard">
+<h3>Go to your billing dashboard<a class="headerlink" href="#go-to-your-billing-dashboard" title="Permalink to this headline">#</a></h3>
+<img alt="../_images/billing_dashboard.jpg" src="../_images/billing_dashboard.jpg" />
+</section>
+<section id="you-can-check-how-much-you-have-been-spending-do-it-often">
+<h3>You can check how much you have been spending [do it often!]<a class="headerlink" href="#you-can-check-how-much-you-have-been-spending-do-it-often" title="Permalink to this headline">#</a></h3>
+<img alt="../_images/billing_home.jpg" src="../_images/billing_home.jpg" />
+</section>
+<section id="go-to-textit-cost-explorer">
+<h3>Go to \textit[Cost Explorer”/&gt;<a class="headerlink" href="#go-to-textit-cost-explorer" title="Permalink to this headline">#</a></h3>
+<img alt="../_images/go_to_cost_explorer.jpg" src="../_images/go_to_cost_explorer.jpg" />
+</section>
+<section id="look-at-the-daily-amounts-you-spent">
+<h3>Look at the daily amounts you spent<a class="headerlink" href="#look-at-the-daily-amounts-you-spent" title="Permalink to this headline">#</a></h3>
+<img alt="../_images/daily_spend_view.jpg" src="../_images/daily_spend_view.jpg" />
+</section>
+<section id="id2">
+<h3>Look at the daily amounts you spent<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h3>
+<img alt="../_images/see_history.jpg" src="../_images/see_history.jpg" />
+</section>
+<section id="go-to-textit-budgets">
+<h3>Go to \textit[Budgets”/&gt;<a class="headerlink" href="#go-to-textit-budgets" title="Permalink to this headline">#</a></h3>
+<img alt="../_images/go_to_budgets.jpg" src="../_images/go_to_budgets.jpg" />
+</section>
+<section id="you-can-create-your-own-budgets">
+<h3>You can create your own budgets<a class="headerlink" href="#you-can-create-your-own-budgets" title="Permalink to this headline">#</a></h3>
+<img alt="../_images/create_budget.jpg" src="../_images/create_budget.jpg" />
+</section>
+</section>
+<section id="some-sources-of-funding">
+<h2>Some sources of funding<a class="headerlink" href="#some-sources-of-funding" title="Permalink to this headline">#</a></h2>
+<p>Become a member of the <a class="reference external" href="https://depts.washington.edu/uwrcc/">Research Computing Club</a> and apply for AWS credits through their <a class="reference external" href="https://depts.washington.edu/uwrcc/getting-started-2/cloud-computing/">Cloud Credit Program</a>.</p>
+<p>Apply to the <a class="reference external" href="https://environment.uw.edu/students/student-resources/scholarships-funding/graduate-scholarships-funding/other-graduate-funding-opportunities/integral-environmental-big-data-research-award/">Integral Environmental Big Data Research Fund</a>: For graduate students, deadline in February.</p>
+<p>Apply to an <a class="reference external" href="https://www.microsoft.com/en-us/ai/ai-for-earth-grants">Azure Compute Grant</a> if you want to use Azure instead of AWS, and your research focuses on Climate, Agriculture, Biodiversity, or Water.</p>
+<p>Workshop on Azure</p>
+<ul class="simple">
+<li><p>Azure 101: Getting Started with Azure: <a class="reference external" href="https://aka.ms/university-azure/GettingStartedAzure">https://aka.ms/university-azure/GettingStartedAzure</a></p></li>
+<li><p>Working with Data in Azure: <a class="reference external" href="https://aka.ms/university-azure/DataOnAzure">https://aka.ms/university-azure/DataOnAzure</a></p></li>
+<li><p>Machine Learning on Azure: <a class="reference external" href="https://aka.ms/university-azure/MachineLearning">https://aka.ms/university-azure/MachineLearning</a></p></li>
+<li><p>Office Hours: April 9 at 10am PST, April 16 at 10am PST, April 23 at 10am PST</p></li>
+</ul>
+</section>
+<section id="happy-computing">
+<h2>Happy computing!<a class="headerlink" href="#happy-computing" title="Permalink to this headline">#</a></h2>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./ch_2"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../ch_1/story.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Introduction to Version Control with Git</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../ch_3/intro_to_obspy.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Introduction to obspy</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By eScience Institute, University of Washington<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

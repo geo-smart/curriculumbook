@@ -1,0 +1,1128 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Homeworks 4 and 5</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Glossaries" href="../reference/glossary.html" />
+    <link rel="prev" title="Frequency Transform" href="fourier_transform.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint">⚠️ This book is currently under construction ⚠️</div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/GeoSMART_logo.svg" class="logo" alt="logo">
+      
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to the GeoSMART Jupyter Book!
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  About
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference external" href="https://geo-smart.github.io/index.html">
+   Geosmart website
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Preparation
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference external" href="https://foundations.projectpythia.org/landing-page.html">
+   Project Pythia Foundations
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Introduction
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/about_this_book.html">
+   About This Book (ESS490-590-Spr21)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/computational_environments.html">
+   Computational Environments
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Version Control with Git
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch_1/story.html">
+   Introduction to Version Control with Git
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch_1/notebooks.html">
+   Notebooks
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Cloud Computing with AWS
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch_2/story.html">
+   Cloud Computing: Running Python Code on AWS
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch_2/notebooks.html">
+   Notebooks
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  K-Means with Pandas
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch_3/story.html">
+   Introduction to obspy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch_3/notebooks.html">
+   Notebooks
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Relational and Non-relational Databases
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch_4/story.html">
+   Databases
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch_4/notebooks.html">
+   Notebooks
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Resampling and Fourier Transformations
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="resampling.html">
+   Statistical analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="fourier_transform.html">
+   Frequency Transform
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Homeworks 4 and 5
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Reference
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reference/glossary.html">
+   Glossaries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reference/bibliography.html">
+   Bibliography
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/geo-smart/usecasebook/main?urlpath=lab/tree/book/ch_5/homework.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/geo-smart/usecasebook"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/geo-smart/usecasebook/issues/new?title=Issue%20on%20page%20%2Fch_5/homework.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/geo-smart/usecasebook/edit/main/book/ch_5/homework.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/ch_5/homework.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#terrestrial-glaciers">
+   1. Terrestrial Glaciers
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-import-python-modules-1-point">
+     a) Import Python modules (1 point)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#b-import-data-2-points">
+     b) Import data (2 points)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#c-convert-pandas-to-geopandas-1-point">
+     c) Convert Pandas to Geopandas (1 point)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#d-mapping-geopandas-points-3-points">
+     d) Mapping geopandas points (3 points)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#e-explore-the-data-with-vizualisation-3-points">
+     e) Explore the data with vizualisation (3 points)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#f-linear-regression-5-points-total-counted-in-the-next-section">
+     f) Linear Regression (5 points total counted in the next section)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#spectrogram-analysis-of-iceshelf-vibrations-15-points-total">
+   2) Spectrogram analysis of iceshelf vibrations (15 points total)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#d-spectral-analysis-of-geological-models-10-points">
+   2) 2D Spectral analysis of geological models (10 points)
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Homeworks 4 and 5</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#terrestrial-glaciers">
+   1. Terrestrial Glaciers
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-import-python-modules-1-point">
+     a) Import Python modules (1 point)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#b-import-data-2-points">
+     b) Import data (2 points)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#c-convert-pandas-to-geopandas-1-point">
+     c) Convert Pandas to Geopandas (1 point)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#d-mapping-geopandas-points-3-points">
+     d) Mapping geopandas points (3 points)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#e-explore-the-data-with-vizualisation-3-points">
+     e) Explore the data with vizualisation (3 points)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#f-linear-regression-5-points-total-counted-in-the-next-section">
+     f) Linear Regression (5 points total counted in the next section)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#spectrogram-analysis-of-iceshelf-vibrations-15-points-total">
+   2) Spectrogram analysis of iceshelf vibrations (15 points total)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#d-spectral-analysis-of-geological-models-10-points">
+   2) 2D Spectral analysis of geological models (10 points)
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="homeworks-4-and-5">
+<h1>Homeworks 4 and 5<a class="headerlink" href="#homeworks-4-and-5" title="Permalink to this headline">#</a></h1>
+<p>This homework will practice several tools that we cover over the past 2 weeks. We will practice handling geopandas, plotting these data on maps, reading/writing in netcdf, and spectral analysis of spatial and temporal data.</p>
+<p>Make sure you started your notebook with the <code class="docutils literal notranslate"><span class="pre">uwdsgeo</span></code> environment.</p>
+<p><strong>1. Terrestrial Glacier data base</strong> (15 points):</p>
+<p>practice geopandas, practice plotting on maps, practice measuring means and correlations, linear regressions.</p>
+<p><strong>2. Ice-shelf seismograms</strong> (15 points)</p>
+<p>Time-domain filtering, 1D Fourier transform.</p>
+<p><strong>3. 2D Crustal model</strong> (10 points)</p>
+<p>practice reading netcdf, making maps and exploring 2D spectral content.</p>
+<section id="terrestrial-glaciers">
+<h2>1. Terrestrial Glaciers<a class="headerlink" href="#terrestrial-glaciers" title="Permalink to this headline">#</a></h2>
+<p>We will look at ice thickness of global glaciers from Welty et al, 2021:<br />
+Welty, E., Zemp, M., Navarro, F., Huss, M., Fürst, J.J., Gärtner-Roer, I., Landmann, J., Machguth, H., Naegeli, K., Andreassen, L.M. and Farinotti, D., 2020. Worldwide version-controlled database of glacier thickness observations. Earth System Science Data, 12(4), pp.3039-3055. <a class="reference external" href="https://doi.org/10.5194/essd-12-3039-2020">https://doi.org/10.5194/essd-12-3039-2020</a></p>
+<section id="a-import-python-modules-1-point">
+<h3>a) Import Python modules (1 point)<a class="headerlink" href="#a-import-python-modules-1-point" title="Permalink to this headline">#</a></h3>
+<p>Import pandas, geopandas, plotting, raster files,  numpy</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># solution</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="b-import-data-2-points">
+<h3>b) Import data (2 points)<a class="headerlink" href="#b-import-data-2-points" title="Permalink to this headline">#</a></h3>
+<p>Read the glacier data from the file <code class="docutils literal notranslate"><span class="pre">glathida/data/T.csv</span></code> into a pandas data frame, and decribe briefly the dataframe content and its first few lines.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># solution</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="c-convert-pandas-to-geopandas-1-point">
+<h3>c) Convert Pandas to Geopandas (1 point)<a class="headerlink" href="#c-convert-pandas-to-geopandas-1-point" title="Permalink to this headline">#</a></h3>
+<p>You can create a Geopandas GeoDataFrame from a Pandas DataFrame if there is coordinate data in the DataFrame. In the data that you opened above, there are columns for the <code class="docutils literal notranslate"><span class="pre">X</span></code> (or longitude) and <code class="docutils literal notranslate"><span class="pre">Y</span></code> (or latitude) coordinates of each rock formation - with headers named <code class="docutils literal notranslate"><span class="pre">X</span></code> (or here LON) and <code class="docutils literal notranslate"><span class="pre">Y</span></code> (or LAT).</p>
+<p>You can convert columns containing x,y coordinate data using the GeoPandas <code class="docutils literal notranslate"><span class="pre">points_from_xy()</span></code> function as follows:</p>
+<p><code class="docutils literal notranslate"><span class="pre">coordinates</span> <span class="pre">=</span> <span class="pre">gpd.points_from_xy(column-with-x-data.X,</span> <span class="pre">column-with-y-data.Y)</span></code></p>
+<p>Describe the new geopandas.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># solutio</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="d-mapping-geopandas-points-3-points">
+<h3>d) Mapping geopandas points (3 points)<a class="headerlink" href="#d-mapping-geopandas-points-3-points" title="Permalink to this headline">#</a></h3>
+<p>Import a nice background elevation map using a rasterIO image. Use the tutorial instructions and download the file from;
+<a class="reference external" href="https://www.naturalearthdata.com/downloads/50m-raster-data/50m-cross-blend-hypso/">https://www.naturalearthdata.com/downloads/50m-raster-data/50m-cross-blend-hypso/</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># solution</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><em><strong>Tips</strong></em>: when plotting a image in <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> you need to add information about the physical dimensions of the image. You can calculate the <code class="docutils literal notranslate"><span class="pre">bounds</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bounds</span> <span class="o">=</span> <span class="p">(</span><span class="n">elevation</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">left</span><span class="p">,</span> <span class="n">elevation</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">right</span><span class="p">,</span> \
+          <span class="n">elevation</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">bottom</span><span class="p">,</span> <span class="n">elevation</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">top</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We will use <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code> to show the raster image in the background (tips: use <code class="docutils literal notranslate"><span class="pre">imshow()</span></code>. The raster image in matplotlib can only import one frame and not three (R, G, B) frames. We will first stack the three images together.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">red</span> <span class="o">=</span> <span class="n">elevation</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">green</span> <span class="o">=</span> <span class="n">elevation</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">blue</span> <span class="o">=</span> <span class="n">elevation</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">pix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dstack</span><span class="p">((</span><span class="n">red</span><span class="p">,</span> <span class="n">green</span><span class="p">,</span> <span class="n">blue</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Then we will use <code class="docutils literal notranslate"><span class="pre">pix</span></code> as the first layer of the plot. Because <code class="docutils literal notranslate"><span class="pre">pix</span></code> only contains pixel dimension, you can add the physical dimension using the argument <code class="docutils literal notranslate"><span class="pre">extent=bounds</span></code> in your first plot.
+Then add the Geopandas points using the geopandas <code class="docutils literal notranslate"><span class="pre">plot()</span></code> function and customize the marker size, style, and color using your artistic talents. Please anotate the figure with x and y labels, a title, and save the figure into a PNG. The figure should be saved into an 11x8 inch plot, and fontsize should be at least 14 points. You can set your default values for all of your plots using the <code class="docutils literal notranslate"><span class="pre">rc.Params.update</span></code> parameters we tested in the week3_lab1 tutorial.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># solution</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="e-explore-the-data-with-vizualisation-3-points">
+<h3>e) Explore the data with vizualisation (3 points)<a class="headerlink" href="#e-explore-the-data-with-vizualisation-3-points" title="Permalink to this headline">#</a></h3>
+<p>Before making any inference of models with the data, we will start by exploring basic correlations among parameters by plotting. In particular, we will focus on <code class="docutils literal notranslate"><span class="pre">MEAN_THICKNESS</span></code>, <code class="docutils literal notranslate"><span class="pre">AREA</span></code>, <code class="docutils literal notranslate"><span class="pre">MEAN_SLOPE</span></code> parameters.</p>
+<p>The database may contain Nans and other “bad” values (welcome to the data world!). First we will clean the data by removing nans. We are mostly interested in the thickness, area, and slope</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gdf2</span><span class="o">=</span><span class="n">gdf</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;MEAN_THICKNESS&#39;</span><span class="p">,</span><span class="s1">&#39;AREA&#39;</span><span class="p">,</span><span class="s1">&#39;MEAN_SLOPE&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Make plots to vizualise the correlation, or lack of, between all three data. Make at least three plots.</p>
+<p><strong>Tips</strong>:</p>
+<ol class="simple">
+<li><p>Use the function <code class="docutils literal notranslate"><span class="pre">scatter</span></code> to plot the values of mean thickness, mean slope, area, and latitude.</p></li>
+<li><p>use one of the dataframe columns as a color using the argument <code class="docutils literal notranslate"><span class="pre">c</span></code>. You can also vary the <code class="docutils literal notranslate"><span class="pre">colormap</span></code> using the argument <code class="docutils literal notranslate"><span class="pre">cmap</span></code>. Help on colormaps can be found here: <a class="reference external" href="https://matplotlib.org/stable/tutorials/colors/colormaps.html">https://matplotlib.org/stable/tutorials/colors/colormaps.html</a>. Be mindful of Color-Vision Deficient readers and read <em>Crameri, F., Shephard, G.E. and Heron, P.J., 2020. The misuse of colour in science communication. Nature communications, 11(1), pp.1-10. <a class="reference external" href="https://doi.org/10.1038/s41467-020-19160-7">https://doi.org/10.1038/s41467-020-19160-7</a></em> (find it on the class Gdrive). You can add a third “data” by choosing a marker color that scales with an other parameter. For instance, try coloring your marker with the <code class="docutils literal notranslate"><span class="pre">LAT</span></code> parameter to look at systematic latitudinal trends from the equator to the poles.</p></li>
+<li><p>Do not forget to adjust fontsize, figure size (at least 10,8), grid, labels with units. ou may also explore the <em>logarithmic</em> correlations by mapping the axis from linear to logarithmic scale <code class="docutils literal notranslate"><span class="pre">plt.xscale('log')</span></code>.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Figure 1: Mean slope vs mean thickness</span>
+<span class="c1"># solution</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Figure 2: area vs mean thickness</span>
+<span class="c1"># solution</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Figure 2: area vs mean slope</span>
+<span class="c1"># solution</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="f-linear-regression-5-points-total-counted-in-the-next-section">
+<h3>f) Linear Regression (5 points total counted in the next section)<a class="headerlink" href="#f-linear-regression-5-points-total-counted-in-the-next-section" title="Permalink to this headline">#</a></h3>
+<p>You found from basic data visualization that the three parameters <code class="docutils literal notranslate"><span class="pre">MEAN_SLOPE</span></code>, <code class="docutils literal notranslate"><span class="pre">MEAN_THICKNESS</span></code>, and <code class="docutils literal notranslate"><span class="pre">AREA</span></code> are correlated. It does make physical sense because a <em>steep</em> glaciers is likely to be in the high mountains regions, hanging on the mountain walls, and thus be constrained, and conversely, a flat glacier is either at its valley, ocean terminus or on ice sheets.</p>
+<p><strong>1. Simple linear regression (1 point)</strong>
+We will now perform a regression between the parameters (or their log!). Linear regressions are models that can be imported from scikit-learn. Log/exp functions in numpy as <code class="docutils literal notranslate"><span class="pre">np.log()</span></code> and <code class="docutils literal notranslate"><span class="pre">np.exp()</span></code>.
+Remember that a linear regression is finding <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> knowing both <span class="math notranslate nohighlight">\(x\)</span> and the data <span class="math notranslate nohighlight">\(y\)</span> in <span class="math notranslate nohighlight">\(y = Ax +b\)</span>. We want to predict ice thickness from a crude estimate of the glacier area.</p>
+<p><strong>Tips</strong>:
+a. make sure that the dimensions are correct and that there is no NaNs and zeros.
+b. Make sure to inport the scikit learn linear regression function and the error metrics.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># solution</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Make a plot of the data and the linear regression your just performed</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#solution</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Briefly comment on the quality of your fit and a linear regression (1 point)</p>
+<p><strong>2. Leave One Out Cross Validation linear regression (1 point)</strong></p>
+<p>Perform the LOCCV on the <code class="docutils literal notranslate"><span class="pre">AREA</span></code> and <code class="docutils literal notranslate"><span class="pre">THICKNESS</span></code> values. Predict the <code class="docutils literal notranslate"><span class="pre">THICKNESS</span></code> value knowing a <code class="docutils literal notranslate"><span class="pre">AREA</span></code> value. Use material seen in class. Make a plot of your fit.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">LeaveOneOut</span>
+<span class="c1"># solution</span>
+
+<span class="c1"># the data shows cleary a trend, so the predictions of the trends are close to each other:</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;mean of the slope estimates </span><span class="si">%f</span><span class="s2">4.2 and the standard deviation </span><span class="si">%f</span><span class="s2">4.2&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">vel</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">vel</span><span class="p">)))</span>
+<span class="c1"># the test error is the average of the mean-square-errors</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;CV = </span><span class="si">%f</span><span class="s2">4.2&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">mse</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>3. Bootstrapping (1 point)</strong></p>
+<p>Perform the same analysis but using a bootstrapping technique. Output the mean and standard deviation of the slope. An illustration with a histogram  may help.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.utils</span> <span class="kn">import</span> <span class="n">resample</span>
+<span class="c1"># solution</span>
+<span class="c1"># the data shows cleary a trend, so the predictions of the trends are close to each other:</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;mean of the velocity estimates </span><span class="si">%f</span><span class="s2">4.2 and the standard deviation </span><span class="si">%f</span><span class="s2">4.2&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">vel</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">vel</span><span class="p">)))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">vel</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>4. Predict the thickness of a glacier (2 points)</strong></p>
+<p>Let assume that you measure a glacier of area 10 km<span class="math notranslate nohighlight">\(^2\)</span>. Can you use your bootstrap regression framework to provide a distribution of possible values of the ice thickness ? Output the mean and standard deviation of the predicted ice thickness.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># solution</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="spectrogram-analysis-of-iceshelf-vibrations-15-points-total">
+<h2>2) Spectrogram analysis of iceshelf vibrations (15 points total)<a class="headerlink" href="#spectrogram-analysis-of-iceshelf-vibrations-15-points-total" title="Permalink to this headline">#</a></h2>
+<p>We will explore the spectral content of the vibrations felt on iceshelves. We first download seismic data, then filter it at different frequency bandwidths, then plot the spectrogram and comment on the data.</p>
+<p>The seismic data is handled by the Obspy package. Review the obspy tutorial that Ariane.
+We will download the data presented in: Aster, R.C., Lipovsky, B.P., Cole, H.M., Bromirski, P.D., Gerstoft, P., Nyblade, A., Wiens, D.A. and Stephen, R., 2021. Swell‐Triggered Seismicity at the Near‐Front Damage Zone of the Ross Ice Shelf. Seismological Research Letters. <a class="reference external" href="https://doi.org/10.1785/0220200478">https://doi.org/10.1785/0220200478</a></p>
+<p><strong>Tips</strong>:</p>
+<ol class="simple">
+<li><p>Check out the SciPy filtering help here: <a class="reference external" href="https://scipy-cookbook.readthedocs.io/items/ButterworthBandpass.html">https://scipy-cookbook.readthedocs.io/items/ButterworthBandpass.html</a>. Obspy has built in functions as well, but for the sake of practicing, explore the scipy filtering functions.</p></li>
+<li><p>The usual steps to handling seismic data are: data download (<code class="docutils literal notranslate"><span class="pre">get_waveforms</span></code>) &amp; removing the instrumental response (<code class="docutils literal notranslate"><span class="pre">remove_response</span></code>).</p></li>
+</ol>
+<p><strong>a. Import the relevant Obspy python modules (1 point).</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#solution:</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import the Obspy modules that will be useful to download seismic dat</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>b. Data download (2 points)</strong></p>
+<p>We will now download the data from station “DR01” from seismic network “XH”, channel “LHN” from 1/1/2015 until 3/31/2015. The client will be the “IRIS” data center. Obspy functions take on UTCDateTime formatted obspy datetime object, be sure to call or import that specific function. (1 point)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#solution</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># how many days did we download?</span>
+<span class="n">dt</span><span class="o">=</span><span class="n">Tend</span><span class="o">-</span><span class="n">Tstart</span> <span class="c1"># in seconds</span>
+<span class="n">Ndays</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">dt</span><span class="o">/</span><span class="mi">86400</span><span class="p">)</span> <span class="c1"># in days</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>c. Time series filtering (1 point)</strong></p>
+<p>Now we will filter the trace to explore its frequency content. We will apply 3 filters:</p>
+<ol class="simple">
+<li><p>a <code class="docutils literal notranslate"><span class="pre">lowpass</span></code> filter to look at seismic frequencies below 0.01Hz, or 100 s period</p></li>
+<li><p>a <code class="docutils literal notranslate"><span class="pre">bandpass</span></code> filter to look at seismic frequencies between 0.01Hz-0.1 Hz (10-100s)</p></li>
+<li><p>a <code class="docutils literal notranslate"><span class="pre">highpass</span></code> filter to look at seismic frequencies higher than 0.1 Hz (10s) and until the time series Nyquist frequency (0.5Hz since the data is sampled at 1 Hz).</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.signal</span> <span class="kn">import</span> <span class="n">butter</span><span class="p">,</span><span class="n">buttord</span><span class="p">,</span>  <span class="n">sosfiltfilt</span><span class="p">,</span> <span class="n">freqs</span>
+
+
+<span class="c1"># Here we use a Butterworth filter to select the spectral content of the waveform. </span>
+<span class="c1"># I like to use Buttord because it finds the order of the filter that meets the amplitude reduction criterion</span>
+<span class="c1"># it&#39;s a lot more intuitive! https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.buttord.html</span>
+
+<span class="n">N1</span><span class="p">,</span> <span class="n">Wn1</span> <span class="o">=</span> <span class="n">buttord</span><span class="p">(</span><span class="mf">0.005</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">b1</span><span class="p">,</span> <span class="n">a1</span> <span class="o">=</span> <span class="n">butter</span><span class="p">(</span><span class="n">N1</span><span class="p">,</span> <span class="n">Wn1</span><span class="p">,</span> <span class="s1">&#39;low&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">N2</span><span class="p">,</span> <span class="n">Wn2</span> <span class="o">=</span> <span class="n">buttord</span><span class="p">([</span><span class="mf">0.005</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">],</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">b2</span><span class="p">,</span> <span class="n">a2</span> <span class="o">=</span> <span class="n">butter</span><span class="p">(</span><span class="n">N2</span><span class="p">,</span> <span class="n">Wn2</span><span class="p">,</span> <span class="s1">&#39;band&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">N3</span><span class="p">,</span> <span class="n">Wn3</span> <span class="o">=</span> <span class="n">buttord</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">b3</span><span class="p">,</span> <span class="n">a3</span> <span class="o">=</span> <span class="n">butter</span><span class="p">(</span><span class="n">N3</span><span class="p">,</span> <span class="n">Wn3</span><span class="p">,</span> <span class="s1">&#39;high&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+
+<span class="n">w1</span><span class="p">,</span> <span class="n">h1</span> <span class="o">=</span> <span class="n">freqs</span><span class="p">(</span><span class="n">b1</span><span class="p">,</span> <span class="n">a1</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">500</span><span class="p">))</span>
+<span class="n">w2</span><span class="p">,</span> <span class="n">h2</span> <span class="o">=</span> <span class="n">freqs</span><span class="p">(</span><span class="n">b2</span><span class="p">,</span> <span class="n">a2</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">500</span><span class="p">))</span>
+<span class="n">w3</span><span class="p">,</span> <span class="n">h3</span> <span class="o">=</span> <span class="n">freqs</span><span class="p">(</span><span class="n">b3</span><span class="p">,</span> <span class="n">a3</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">500</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">w1</span><span class="p">,</span> <span class="mi">20</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">h1</span><span class="p">)))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">w2</span><span class="p">,</span> <span class="mi">20</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">h2</span><span class="p">)))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">w3</span><span class="p">,</span> <span class="mi">20</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">h3</span><span class="p">)))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;low&#39;</span><span class="p">,</span><span class="s1">&#39;bandpass&#39;</span><span class="p">,</span><span class="s1">&#39;high&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="mf">0.001</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">60</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+
+
+<span class="c1">## It is recommended to use the second order sections when filtering to avoid transfer function errors.</span>
+<span class="n">sos1</span> <span class="o">=</span> <span class="n">butter</span><span class="p">(</span><span class="n">N1</span><span class="p">,</span> <span class="n">Wn1</span><span class="p">,</span> <span class="s1">&#39;low&#39;</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="s2">&quot;sos&quot;</span><span class="p">)</span>
+<span class="n">sos2</span> <span class="o">=</span> <span class="n">butter</span><span class="p">(</span><span class="n">N2</span><span class="p">,</span> <span class="n">Wn2</span><span class="p">,</span> <span class="s1">&#39;band&#39;</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="s2">&quot;sos&quot;</span><span class="p">)</span>
+<span class="n">sos3</span> <span class="o">=</span> <span class="n">butter</span><span class="p">(</span><span class="n">N3</span><span class="p">,</span> <span class="n">Wn3</span><span class="p">,</span> <span class="s1">&#39;high&#39;</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="s2">&quot;sos&quot;</span><span class="p">)</span>
+
+<span class="c1"># filter data</span>
+<span class="n">Z1</span> <span class="o">=</span> <span class="n">sosfiltfilt</span><span class="p">(</span><span class="n">sos1</span><span class="p">,</span> <span class="n">Z</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">data</span> <span class="p">)</span>
+<span class="n">Z2</span> <span class="o">=</span> <span class="n">sosfiltfilt</span><span class="p">(</span><span class="n">sos2</span><span class="p">,</span> <span class="n">Z</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+<span class="n">Z3</span> <span class="o">=</span> <span class="n">sosfiltfilt</span><span class="p">(</span><span class="n">sos3</span><span class="p">,</span> <span class="n">Z</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+
+
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">t</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">Ndays</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">Z</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">))</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">Z1</span><span class="p">);</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;DR01 - LHN -  0.001-0.01Hz&#39;</span><span class="p">);</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">Z2</span><span class="p">);</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;0.01-0.1Hz&#39;</span><span class="p">);</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">Z3</span><span class="p">);</span><span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;0.1-1Hz&#39;</span><span class="p">);</span><span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (in days)&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>c. Fourier transform (3 points)</strong>
+Perform and the Fourier amplitude spectrum of the seismogram. Don’t forget to label the figure properly! Use the Fourier frequency vector for x-axis. Use the tutorials for inspirtion.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># solution</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Comment on the spectral content of the seismograms. How does the relative contribution of the low, intermediate, and high frequency signal compares with the relative amplitude observed in the bandpass filtered time series?</p>
+<p><strong>d. Synthetic noise (3 points)</strong></p>
+<p>We have now a good idea of what the amplitude of seismic waves are at this station. Now create a noise signal using the Fourier amplitude spectrum of the seismic signal, and with a random phase. You can use the notes from our first Numpy example (week3_lab1.ipynb)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># solution</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>e. !Sanity check! (1 point)</strong></p>
+<p>Check that the Fourier amplitude spectrum of the noise is that of the original window. Overlay them on a plot</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#solution</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">2</span><span class="o">-</span><span class="n">fd86f2ae60a1</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">Zhat</span> <span class="o">=</span> <span class="n">fft</span><span class="p">(</span><span class="n">Z</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">,</span><span class="n">n</span><span class="o">=</span><span class="n">Nfft</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">Nhat</span> <span class="o">=</span> <span class="n">fft</span><span class="p">(</span><span class="n">noise</span><span class="p">,</span><span class="n">n</span><span class="o">=</span><span class="n">Nfft</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">fig</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">freqVec</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">Zhat</span><span class="p">[:</span><span class="n">Nfft</span> <span class="o">//</span> <span class="mi">2</span><span class="p">]))</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;fft&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>f. Short Time Fourier Transform (4 points)</strong></p>
+<p>STFT are important transforms that are used in data science of time series. They are mainly used for denoising and for feature extraction.
+Spectrograms are STFT with window overlap.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.signal</span> <span class="kn">import</span> <span class="n">stft</span>
+
+<span class="n">nperseg</span><span class="o">=</span><span class="mi">1000</span>
+
+<span class="c1">#solution</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now you have created a 2D image of a time series! Many seismologists use that as input to convolutional neural networks.</p>
+</section>
+<section id="d-spectral-analysis-of-geological-models-10-points">
+<h2>2) 2D Spectral analysis of geological models (10 points)<a class="headerlink" href="#d-spectral-analysis-of-geological-models-10-points" title="Permalink to this headline">#</a></h2>
+<p>In this exercise we will correlate water table level with surface elevation. Please download the 3D Geologic framework
+<a class="reference external" href="https://www.sciencebase.gov/catalog/item/5cfeb4cce4b0156ea5645056">https://www.sciencebase.gov/catalog/item/5cfeb4cce4b0156ea5645056</a>
+and
+<a class="reference external" href="https://www.sciencebase.gov/catalog/item/5e287112e4b0d3f93b03fa7f">https://www.sciencebase.gov/catalog/item/5e287112e4b0d3f93b03fa7f</a></p>
+<p>In the following we will prepare our data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">netCDF4</span> <span class="k">as</span> <span class="nn">nc</span>
+<span class="n">file1</span> <span class="o">=</span> <span class="s1">&#39;3DGeologicFrame/NCM_GeologicFrameworkGrids.nc&#39;</span> <span class="c1"># mmake sure that the foler is called correctly.</span>
+<span class="n">file2</span> <span class="o">=</span> <span class="s1">&#39;3DGeologicFrame/NCM_SpatialGrid.nc&#39;</span>
+<span class="n">file3</span> <span class="o">=</span> <span class="s1">&#39;CalibrationCoef/NCM_AuxData.nc&#39;</span>
+<span class="n">geology</span> <span class="o">=</span> <span class="n">nc</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">file1</span><span class="p">)</span>
+<span class="n">grid</span> <span class="o">=</span> <span class="n">nc</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">file2</span><span class="p">)</span>
+<span class="n">watertable</span> <span class="o">=</span> <span class="n">nc</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">file3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">grid</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">geology</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">watertable</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">grid</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">:</span><span class="mi">4901</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">3201</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">grid</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">:</span><span class="mi">4901</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">3201</span><span class="p">]</span>
+<span class="n">y_ticks</span> <span class="o">=</span> <span class="n">grid</span><span class="p">[</span><span class="s1">&#39;Index k grid&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">:</span><span class="mi">4901</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">y_labels</span> <span class="o">=</span> <span class="n">grid</span><span class="p">[</span><span class="s1">&#39;Latitude vector&#39;</span><span class="p">][:]</span>
+<span class="c1"># recreate the lat long vectors.</span>
+<span class="n">minlat</span><span class="p">,</span><span class="n">maxlat</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">grid</span><span class="p">[</span><span class="s1">&#39;Latitude vector&#39;</span><span class="p">][:]),</span><span class="nb">max</span><span class="p">(</span><span class="n">grid</span><span class="p">[</span><span class="s1">&#39;Latitude vector&#39;</span><span class="p">][:])</span>
+<span class="n">minlon</span><span class="p">,</span><span class="n">maxlon</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">grid</span><span class="p">[</span><span class="s1">&#39;Longitude vector&#39;</span><span class="p">][:]),</span><span class="nb">max</span><span class="p">(</span><span class="n">grid</span><span class="p">[</span><span class="s1">&#39;Longitude vector&#39;</span><span class="p">][:])</span>
+<span class="n">xlat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">minlat</span><span class="p">,</span><span class="n">maxlat</span><span class="p">,</span><span class="mi">3201</span><span class="p">)</span>
+<span class="n">xlon</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">minlon</span><span class="p">,</span><span class="n">maxlon</span><span class="p">,</span><span class="mi">4901</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">geology</span><span class="p">[</span><span class="s1">&#39;Surface Elevation&#39;</span><span class="p">][</span><span class="mi">3246</span><span class="p">,</span> <span class="mi">1234</span><span class="p">]</span>
+<span class="n">elevation</span> <span class="o">=</span> <span class="n">geology</span><span class="p">[</span><span class="s1">&#39;Surface Elevation&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">:</span><span class="mi">4901</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">3201</span><span class="p">]</span>
+<span class="n">bedrock</span> <span class="o">=</span> <span class="n">geology</span><span class="p">[</span><span class="s1">&#39;Bedrock Elevation&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">:</span><span class="mi">4901</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">3201</span><span class="p">]</span>
+<span class="n">WT</span> <span class="o">=</span> <span class="n">watertable</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;Water Table Depth&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">:</span><span class="mi">4901</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">3201</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>a. Plot (2 points)</strong>
+Plot the data <code class="docutils literal notranslate"><span class="pre">WT</span></code> and <code class="docutils literal notranslate"><span class="pre">elevation</span></code>. Use <code class="docutils literal notranslate"><span class="pre">contourf</span></code>,<code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> as lat-long variables. You can use <code class="docutils literal notranslate"><span class="pre">levels</span></code>  to split the color map, and <code class="docutils literal notranslate"><span class="pre">alpha</span></code> less than 1 to increase transparency.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">WT</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;RdBu_r&quot;</span><span class="p">,</span><span class="n">levels</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">60</span><span class="p">,</span><span class="mi">70</span><span class="p">,</span><span class="mi">80</span><span class="p">,</span><span class="mi">90</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">200</span><span class="p">],</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">elevation</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Greys&quot;</span><span class="p">,</span><span class="n">linewidths</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">,</span><span class="s1">&#39;box&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">2.6E6</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(())</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(())</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Western US water table depth&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>b. Perform and plot the 2D Fourier transforms (4 points)</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.fftpack</span> <span class="kn">import</span> <span class="n">fft2</span><span class="p">,</span> <span class="n">fftfreq</span><span class="p">,</span><span class="n">fftshift</span>
+<span class="c1">#solution</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>c. Interpretation (1 point)</strong>
+Comment on the wavelengths that dominate the DEM and the water table wavelengths</p>
+<p><strong>d. 2D filtering (3 points)</strong>
+Find a way to low pass filter the image (spectral filtering or convolution)</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./ch_5"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="fourier_transform.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Frequency Transform</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../reference/glossary.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Glossaries</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By eScience Institute, University of Washington<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

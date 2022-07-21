@@ -18,15 +18,45 @@ parts:
     - file: introduction/about_this_book
     - file: introduction/computational_environments
 
-- caption: Chapter 1
+- caption: Version Control with Git
   chapters:
     - file: ch_1/story
-    - file: ch_1/notebooks
 
-- caption: Chapter 2
+- caption: Cloud Computing with AWS
   chapters:
     - file: ch_2/story
-    - file: ch_2/notebooks
+
+- caption: K-Means with Pandas
+  chapters:
+    - file: ch_3/intro_to_obspy
+    - file: ch_3/intro_to_pandas
+    - file: ch_3/intro_to_numpy_and_matplotlib
+
+- caption: Databases
+  chapters:
+    - file: ch_4/story
+
+- caption: Resampling
+  chapters:
+    - file: ch_5/resampling
+    - file: ch_5/fourier_transform
+
+- caption: Clustering
+  chapters:
+    - file: ch_6/k_means_clustering
+
+- caption: Dimentionality Reduction
+  chapters:
+    - file: ch_7/model_performance
+    - file: ch_7/principal_component_analysis
+
+- caption: Classification
+  chapters:
+    - file: ch_8/story
+
+- caption: Logistic Regression
+  chapters:
+    - file: ch_9/logistic_regression
 
 - caption: Reference
   chapters:
